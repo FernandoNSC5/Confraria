@@ -12,6 +12,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 		<!-- Usefull form stylesheet -->
 		<style>
@@ -65,10 +66,10 @@
 				<div id="esposa" class="grid">
 					Esposa
 					<div>
-						<input id="esposa-sim" name="radio-esposa" type="radio" checked>
-						<label for="esposa-sim">Não</label>
-						<input id="esposa-nao" name="radio-esposa" type="radio">
-						<label for="esposa-nao">Sim</label> 
+						<input id="esposa-nao" name="radio-esposa" type="radio" checked>
+						<label for="esposa-nao">Não</label>
+						<input id="esposa-sim" name="radio-esposa" onclick="showSpouse()" type="radio">
+						<label for="esposa-sim">Sim</label> 
 					</div>
 				</div>
 				<input id="show_esposa" class="dont-show" type="text" placeholder="Nome da Esposa">
@@ -80,10 +81,10 @@
 				<div id="filho" class="grid">
 					Filhos  
 					<div>
-						<input id="filhos-sim" name="radio-filhos" type="radio" checked>
-						<label for="filhos-sim">Não</label>
-						<input id="filhos-nao" name="radio-filhos" type="radio">
-						<label for="filhos-nao">Sim</label> 
+						<input type="radio" id="filho-nao" name="radio-filhos" value="1" checked>
+						<label for="filho-nao">Não</label>
+						<input type="radio" id="filho-sim" onclick="showFilho()" value="2" name="radio-filhos">
+						<label for="filho-sim">Sim</label> 
 					</div>
 				</div>
 				<input id="show_filho" class="dont-show" type="text" placeholder="Nome da Filho">
@@ -119,6 +120,19 @@
 					window.location.href= "index.php";
 
 				}
+
+				function showFilho(){
+					if(document.getElementById('filho-sim').checked){
+						document.getElementById('show_filho').classList.remove('dont-show');
+					}
+				}
+
+				function showSpouse(){
+					if(document.getElementById('esposa-sim').checked){
+						document.getElementById('show_esposa').classList.remove('dont-show');
+					}
+				}
+
 			</script>
 
 	</body>
