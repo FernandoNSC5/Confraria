@@ -23,7 +23,7 @@
 				<h2 style="font-family: eurostyle">Enovírtua</h2>
 				<p>O portal Definitivo do vinho</p>
 				<ul class="actions">
-					<li><a href="#" class="button big special">Saiba mais</a></li>
+					<li><a href="#" class="button big alt">Saiba mais</a></li>
 				</ul>
 			</section>
 
