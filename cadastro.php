@@ -51,57 +51,58 @@
 
 			<h1><span style="font-family: eurostyle">Cadastro de Usuário Enovírtua</span></h1>
 			<hr>
-			<form  id="cadastro-usuario" class="grid" action="#" method="POST">
+			<form  id="cadastro-usuario" action="#" method="POST">
 
-				<input type="text" placeholder="Nome Completo" >
-				<input type="text" placeholder="Ocupação">
-				<input type="email" placeholder="Email" >
-				<input type="email" placeholder="Confirmação de e-mail">
-				<input type="text" placeholder="Celular" >
-				<input type="text" placeholder="Telefone">
-				<input type="text" placeholder="Nascimento">
-
-				
-				<!-- Esposa -->
-				<div id="esposa" class="grid">
-					Esposa
-					<div>
-						<input id="esposa-nao" name="radio-esposa" type="radio" checked>
-						<label for="esposa-nao">Não</label>
-						<input id="esposa-sim" name="radio-esposa" onclick="showSpouse()" type="radio">
-						<label for="esposa-sim">Sim</label> 
-					</div>
+				<h4>Dados Pessoais</h4>
+				<div class="grid" >
+					<input type="text" placeholder="Nome Completo" required>
+					<input type="text" placeholder="Ocupação" required>
+					<input type="email" placeholder="Email" required>
+					<input type="email" placeholder="Confirmação de e-mail" required>
+					<input type="text" placeholder="Nascimento" required>
+					<input type="text" placeholder="Ofício" required>
+					<input type="text" placeholder="Tipo de Membro" required>
+					<br>
+					<input type="text" placeholder="Celular" required>
+					<input type="text" placeholder="Telefone" required>
 				</div>
-				<input id="show_esposa" class="dont-show" type="text" placeholder="Nome da Esposa">
-				<input id="show_esposa" class="dont-show" type="text" placeholder="Nascimento da Esposa">
 
-				<input type="text" placeholder="Tipo de Membro" >
-
-				<!-- Filhos -->
-				<div id="filho" class="grid">
-					Filhos  
-					<div>
-						<input type="radio" id="filho-nao" name="radio-filhos" value="1" checked>
-						<label for="filho-nao">Não</label>
-						<input type="radio" id="filho-sim" onclick="showFilho()" value="2" name="radio-filhos">
-						<label for="filho-sim">Sim</label> 
-					</div>
+				<hr>
+				<h4>Dados do Conjugue</h4>
+				<p>ATENÇÃO! Em caso de ausência conjugal, não preencher os campos a seguir.</p>
+				<div class="grid">
+					<input type="text" placeholder="Nome da Esposa">
+					<input type="text" placeholder="Nascimento da Esposa">
 				</div>
-				<input id="show_filho" class="dont-show" type="text" placeholder="Nome da Filho">
-				<input id="show_filho" class="dont-show" type="text" placeholder="Nascimento do Filho">
 
-				<input type="text" placeholder="Ofício">
-				
-				<input type="text" placeholder="País" >
-				<input type="text" placeholder="Estado">
-				<input type="text" placeholder="Cidade" >
-				<input type="text" placeholder="CEP">
-				<input type="text" placeholder="Rua" >
-				<input type="text" placeholder="Número Residencial">
+				<hr>
+				<h4>Dados dos Dependentes</h4>
+				<p>ATENÇÃO! Em caso de ausência de dependentes, não preencher os campos a seguir.</p>
 				
 				<div class="grid">
-					<button type="submit">Cadastrar</button>
-					<button type="button" onclick="goBack()">Cancelar</button>
+					<input type="text" placeholder="Nome da Filho">
+					<input type="text" placeholder="Nascimento do Filho">
+				</div>
+
+				<hr>
+				<h4>Dados Residenciais</h4>
+				
+				<div class="grid">
+					<input type="text" placeholder="País" required>
+					<input type="text" placeholder="Estado" required>
+					<input type="text" placeholder="Cidade" required>
+					<input type="text" placeholder="CEP" required>
+					<input type="text" placeholder="Rua" required>
+					<input type="text" placeholder="Número da Residência" required><input type="text" placeholder="Complemento (Opcional)" >
+				</div>
+
+				<br>
+
+				<div class="grid" style="width: 40%">
+					<div class="grid">
+						<button type="submit">Cadastrar</button>
+						<button type="button" onclick="goBack()">Cancelar</button>
+					</div>
 				</div>
 			</form>
 		</div>

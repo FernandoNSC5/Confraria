@@ -49,11 +49,11 @@
 			<section class="wrapper style3 special">
 				<div class="inner">
 					<header class="major narrow	">
-						<h2>Quem somos</h2>
-						<p>A <b>Enovírtua</b> é uma empresa que visa ser a mais completa fonte virtual de informação sobre vinhos.</p>
+						<h2>Requisite acesso</h2>
+						<p>Requisite acesso de sua confraria em nosso portal <strong>Enovírtua</strong>. 
 					</header>
 					<ul class="actions">
-						<li><a href="#" class="button big alt">Descubra!</a></li>
+						<li><a href="#" class="button big alt">Requisitar</a></li>
 					</ul>
 				</div>
 			</section>
