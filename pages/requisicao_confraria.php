@@ -25,12 +25,11 @@
 				align-items: center;
 			}
 
-			.singleGrid {
+			.gridBtn {
 				display: grid;
 				grid-template-columns: auto;
-				grid-column-gap:50px;
+				grid-column-gap: 50px;
 				grid-row-gap: 10px;
-				align-items: center;
 			}
 
 			.dont-show {
@@ -38,7 +37,7 @@
 			}
 
 			@media screen and (min-width: 480px) {
-				.grid{
+				.grid {
 					display: grid;
 					grid-template-columns: auto auto;
 					grid-column-gap:50px;
@@ -46,9 +45,9 @@
 					align-items: center;
 				}
 
-				.singleGrid {
+				.btnGrid {
 					display: grid;
-					grid-template-columns: auto;
+					grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 					grid-column-gap:50px;
 					grid-row-gap: 10px;
 					align-items: center;
@@ -111,15 +110,25 @@
 					<input type="text" placeholder="Nome Completo - Integrante" required>
 					<input type="email" placeholder="E-mail" required>
 
-					<input type="text" placeholder="Nome Completo - Integrante" required>
-					<input type="email" placeholder="E-mail" required>
 				</div>
-				
+
+				<!-- Fields to be copied -->
+				<div id="duplicate" class="grid" style="padding-top: 10px">
+					<input id="duplicate" type="text" placeholder="Nome Completo - Integrante" >
+					<input type="email" placeholder="E-mail" >
+				</div>
+
+				<!-- Field where it'd be placed -->
+				<div id="place"></div>
+
 				<br>
 
-				<div class="grid" style="width: 40%">
+				<div class="btnGrid" >
 					<button type="submit">Requisitar</button>
 					<button type="button" onclick="goBack()">Cancelar</button>
+					<div alt="clear-field"></div>
+					<div alt="clear-field"></div>
+					<button type="button" onclick="newFields()">Adicionar Campo</button>
 				</div>
 
 			</form>
@@ -133,10 +142,31 @@
 		<script src="../assets/js/skel.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>
+
 		<script>
+
+			var counter = 0;
+
 			function goBack() {
 				window.location.href= "index.php";
 			}
+
+			function newFields(){
+				
+				if(counter < 20){
+					
+					var clone = document.getElementById('duplicate').cloneNode(true);
+					var des = document.getElementById('place');
+					des.appendChild (clone);
+					
+					counter += 1;
+
+				}else{
+					alert('Ops! Parece que o número maximo de adições foi atingido');
+				}
+
+			}
+
 		</script>
 
 	</body>
