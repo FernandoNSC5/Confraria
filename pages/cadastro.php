@@ -31,11 +31,26 @@
 			}
 
 			@media screen and (min-width: 480px) {
-				.grid{
+				.grid {
 					display: grid;
 					grid-template-columns: auto auto;
 					grid-column-gap:50px;
 					grid-row-gap: 10px;
+					align-items: center;
+				}
+
+				.btnGrid {
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+					grid-column-gap: 50px;
+					grid-row-gap: 10px;
+					align-items: center;
+				}
+
+				.cpGrid {
+					display: grid;
+					grid-template-columns: auto;
+					grid-column-gap: 10px;
 					align-items: center;
 				}
 			}
@@ -77,12 +92,26 @@
 				</div>
 
 				<hr>
+
+				<!-- Cadastro de dependentes -->
 				<h4>Dados dos Dependentes</h4>
 				<p>ATENÇÃO! Em caso de ausência de dependentes, não preencher os campos a seguir.</p>
 				
-				<div class="grid">
+				<div id="duplicate" class="grid" style="padding-bottom: 10px">	
 					<input type="text" placeholder="Nome da Filho">
-					<input type="text" placeholder="Nascimento do Filho">
+					<input type="text" placeholder="Nascimento do Filho" pattern="(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/\d{4}">
+				</div>
+				
+				<!-- Field where it'd be placed -->
+				<div id="place" class="cpGrid"></div>
+
+				<div class="btnGrid" style="padding-top: 10px;">
+					<div alt="clear-field"></div>
+					<div alt="clear-field"></div>
+					<div alt="clear-field"></div>
+					<div alt="clear-field"></div>
+					<div alt="clear-field"></div>
+					<button type="button" onclick="newFields()">Adicionar Campo</button>
 				</div>
 
 				<hr>
@@ -123,16 +152,21 @@
 
 				}
 
-				function showFilho(){
-					if(document.getElementById('filho-sim').checked){
-						document.getElementById('show_filho').classList.remove('dont-show');
-					}
+				function newFields() {
+					var clone = document.getElementById('duplicate').cloneNode(true);
+					var des = document.getElementById('place');
+					des.appendChild (clone);
 				}
 
-				function showSpouse(){
-					if(document.getElementById('esposa-sim').checked){
-						document.getElementById('show_esposa').classList.remove('dont-show');
-					}
+				function updateDateInputs() { 
+				    $('input').each(function() {
+				        var $date = $(this),
+				            date = $date.val().split('-'),
+				            format = ['year', 'month', 'day'];
+				        $.each(format, function(i, v) {
+				            $date.attr('data-' + v, +date[i]);
+				        });
+				    });
 				}
 
 			</script>

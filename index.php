@@ -4,6 +4,35 @@
    https://www.linkedin.com/in/fernandonsc5/
 --------------------------------------->
 
+<?php
+	//Connecting to base
+	require('assets/base/nmrConnection.php');
+	$sql = "SELECT postDate, postText, postTitle, postPhoto FROM post";
+
+	$perPage = 2;
+
+	if(isset($_GET['page']) & !empty($_GET['page'])){
+		$curpage = $_GET['page'];
+	} else {
+		$curpage = 1;
+	}
+
+	$ReadSql = "SELECT * FROM post LIMIT 0, 2";
+	$start = ($curpage * $perPage) - $perPage;
+	$PageSql = "SELECT * FROM post";
+	$pagers = mysqli_query($connection, $PageSql);
+	$totalRes = mysqli_num_rows($pagers);
+
+	$endpage = ceil($totalRes/$perPage);
+	$startpage = $curpage + 1;
+	$nextPage = $curpage + 1;
+	$previousPage = $curpage - 1;
+
+	$sql = "SELECT postDate, postText, postTitle, postPhoto FROM post LIMIT $start, $perPage";
+
+	$res = mysqli_query($connection, $sql);
+?>
+
 <!DOCTYPE HTML>
 <html lang="pt-br">
 	<head>
@@ -11,6 +40,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/pagination.css" />
 	</head>
 
 	<body class="landing">
@@ -27,14 +57,20 @@
 				</ul>
 			</section>
 
-		<!-- Posts loop -->
-			<section class="wrapper style1">
-				<div class="inner">
-					<article class="feature left">
-						<span class="image"><img src="images/uploads/pic01.jpg" alt="" /></span>
+		<section class="wrapper style1">
+			<div class="inner">
+				<?php
+					while($r = mysqli_fetch_assoc($res)){
+					//postDate
+					//postText
+					//postTitle
+					//postPhoto
+				?>
+				<article class="feature left">
+					<span class="image"><img src="images/uploads/pic01.jpg" alt="" /></span>
 						<div class="content">
-							<h2>isso é um título teste</h2>
-							<p>Isto é apenas um teste randomico hahahahaha para testar as paradinhas por aqui e como elas funcionam de fato......</p>
+							<h2><?php echo $r['postTitle']; ?></h2>
+							<p><?php echo $r['postText']; ?></p>
 							<ul class="actions">
 								<li>
 									<a href="#" class="button alt">Saiba Mais</a>
@@ -42,8 +78,27 @@
 							</ul>
 						</div>
 					</article>
+				<?php } ?>
+				<div class="pagination-grid">
+					<div></div>
+					<div class="pagination">
+						<a href="#">&laquo;</a>
+						<a href="#" class="active">1</a>
+						<?php
+							//This code calculates num of pages
+							$pg = (int) $totalRes/$perPage;
+							if($pg * $perPage < $totalRes) {
+								$pg += 1;
+							}
+							for($i = 1; $i<=$pg ; $i++){
+								echo '<a href="#">'.$i.'</a>';
+							}
+						?>
+						<a href="#">&raquo;</a>
+					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
 		<!-- About Enovirtua-->
 			<section class="wrapper style3 special">

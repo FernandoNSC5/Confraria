@@ -1,0 +1,25 @@
+/* 
+
+	@Author: Fernando N. S. Costa
+	Enovírtua - O Portal Definitivo do Vinho
+	https://www.linkedin.com/in/fernandonsc5/
+	base-color: #004c70 -> #4ca5ce
+
+*/
+
+.list-grid {
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+	align-items: center;
+}
+
+.list-row {
+	background-color: grey;
+	color: white;
+}
+
+.list-btn {
+	align-items: right;
+}

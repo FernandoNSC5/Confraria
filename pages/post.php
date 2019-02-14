@@ -32,7 +32,7 @@
 						<p><!-- SUBTITULO -->Pipipi popopo subtitulo</p>
 					</header>
 
-					<a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+					<a href="#" class="image fit"><img src="../images/pic11.jpg" alt="" /></a>
 					<p>Da hadouken hyu<br> ibagem meramente ilustrativa, carregar outra co phpzudo</p>
 
 					<div class="container-form-btn">
