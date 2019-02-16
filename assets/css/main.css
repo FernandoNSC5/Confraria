@@ -97,6 +97,10 @@
 	background-color: rgba(0,0,0,0.4); 
 }
 
+.modal-show {
+	display: block !important;
+}
+
 /* M - Content */
 .modal-content {
 	position: relative;
@@ -124,7 +128,8 @@
 
 .close-btn {
   color: white;
-  float: right;
+  float: right !important;
+  text-align: right !important;;
   font-size: 28px;
   font-weight: bold;
 }
@@ -138,17 +143,19 @@
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: grey;
   color: white;
 }
 
 .modal-body {padding: 2px 16px;}
 
 .modal-footer {
-  padding: 2px 16px;
-  background-color: #5cb85c;
+  padding: 1%;
+  min-height: 50px;
+  background-color: grey;
   color: white;
-}
+  text-align: right;
+}  
 
 /* Containers */
 

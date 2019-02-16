@@ -30,6 +30,15 @@
 			$sql = "SELECT * from confraria";
 			$res = mysqli_query($connection, $sql);
 
+			//for conf
+			$id = 1;
+			$confName = "";
+			$rep = "";
+			$repEmail = "";
+			$listNames = array();
+			$listEmails = array();
+
+
 		?>
 		<div style="padding: 10%">
 			<h1>Requisições de Confraria</h1>
@@ -44,12 +53,22 @@
 					?>
 					<tr>
 						<th><?php echo $r['name']; ?></th>
-						<th style="text-align: right; padding: 1em;"><button id="<?php echo $r['id']; ?>" onclick="getModalId(<?php echo $r['id']; ?>)">Ver mais</button></th>
+						<th style="text-align: right; padding: 1em;"><button id="<?php echo $r['id']; ?>" onclick="showModal()" >Ver mais</button></th>
 					</tr>
 					<?php } ?>
 				</table>
 			</form>	
 		</div>
+
+		<?php
+			//Creating modal
+			$sqlForConf = "SELECT * FROM confraria WHERE id = " . $id;
+			$sqlForMembers = "SELECT * FROM conf_member WHERE confraria_id = " . $id;
+
+			$resConf = mysqli_query($connection, $sqlForConf);
+			$resMember = mysqli_query($connection, $sqlForMembers);
+			$rc = mysqli_fetch_assoc($resConf);
+		?>
 
 		<!-- The modal -->
 		<div id="modal" class="modal">
@@ -57,14 +76,48 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<span class="close">&times;</span>
-					<h2>Modal Header</h2>
+					<h2 class="table-title" style="text-align: center; color: white"><?php echo $rc['name'] ?></h2>
 				</div>
 				<div class="modal-body">
-					<p>Some text in the body</p>
-					<p>some text again</p>
+					
+					<div style="padding-top: 3%">
+						<form id="modal-acept-confraria" action="#" method="POST">
+							
+							<h4>Representante</h4>
+							<table class="modal-table">
+
+								<tr>
+									<th><p><?php echo $rc['representative']; ?></p></th>
+									<th></th>
+								</tr>
+								<tr>
+									<th><p><?php echo $rc['rep_email']; ?></p></th>
+									<th></th>
+								</tr>
+
+							</table>
+							
+							<h4>Integrantes</h4>
+							<table class="modal-table">
+								
+								<?php while($rm = mysqli_fetch_assoc($resMember)) { ?>
+
+								<tr>
+									<th><?php echo $rm['name']; ?></th>
+									<th><?php echo $rm['email']; ?></th>
+								</tr>
+
+							<?php } ?>
+
+							</table>
+
+						</form>
+					</div>
+
 				</div>
 				<div class="modal-footer">
-					<h3>Modal Footer</h3>
+					<button>Aceitar</button>
+					<button>Recusar</button>
 				</div>
 			</div>
 		</div>
@@ -80,29 +133,17 @@
 
 		<!-- Script for modal -->
 		<script>
+			
+			var modal = document.getElementById("modal");
 
-			var modal;
-			//var btn = document.getElementById('modal-btn');
-			var span = document.getElementsByClassName("close")[0];
-
-			function getModalId(id){
-				modal = document.getElementById(id);
+			function showModal(){
+				modal.classList.add("modal-show");
 			}
 
-			//btn.onclick = function(){
-			//	modal.style.display = "block";
-			//}
-
-			span.onclick = function(){
-				modal.style.display = "none";
+			function hideModal(){
+				modal.classList.remove("modal-show");
 			}
-
-			window.onclick = function(event){
-				if(event.target == modal){
-					modal.style.display = "none";
-				}
-			}
-
+	
 		</script>
 	
 	</body>

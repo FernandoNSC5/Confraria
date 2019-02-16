@@ -23,3 +23,12 @@
 .list-btn {
 	align-items: right;
 }
+
+.table-title {
+	font-family: eurostyle;
+}
+
+.modal-table {
+	border:1px solid grey !important;
+	color: grey;
+}
